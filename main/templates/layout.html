@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>{% block title %}My Website{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'layout.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- header -->
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>UploadPro</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+            <div id="theme-toggle-div">
+                <button id="theme-toggle" aria-label="Toggle theme" title="Toggle Theme">
+                    <i id="theme-icon" class="fas"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main -->
+    <main class="container">
+        {% block content %}
+        <section class="file-upload-container">
+            <div class="file-upload-card">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h2>Upload Your Files</h2>
+
+                <div class="drop-area" id="drop-area">
+                    <i class="fas fa-file-upload" style="font-size: 2.5rem; color: #4285f4; margin-bottom: 1rem;"></i>
+                    <p>Drag & drop your files here</p>
+                    <p>or <span class="browse-text">browse</span> to select files</p>
+                </div>
+
+                <input type="file" id="file-input" class="custom-file-input" multiple />
+                <label for="file-input" class="custom-file-label">
+                    <i class="fas fa-folder-open" style="margin-right: 8px;"></i>
+                    Choose Files
+                </label>
+
+                <span class="file-name" id="file-name">No files selected</span>
+
+                <div class="upload-progress" id="upload-progress">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <button class="upload-btn" id="upload-btn" disabled>
+                    <i class="fas fa-upload" style="margin-right: 8px;"></i>
+                    Upload Files
+                </button>
+
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Upload completed successfully!</span>
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+    </main>
+    <!-- footer -->
+    <footer>
+        <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-logo">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>UploadPro</span>
+            </div>
+            <p>We provide secure and fast file upload services with the highest level of privacy and data protection for all your needs.</p>
+            <div class="footer-social">
+                <a href="https://github.com/onkarshinde77" aria-label="Github"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/onkarshinde77" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/onkarshinde77" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/onkar.ss77/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h3 class="footer-heading">Contact Us</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Akurdi,Pimpri-Chinchwad,Pune</p>
+            <p><i class="fas fa-phone-alt"></i> +91 9309313545</p>
+            <p><i class="fas fa-envelope"></i> shindeonkar704@gmail.com</p>
+        </div>
+        </div>
+            <div class="footer-bottom">
+            <p>&copy; <span id="current-year">2023</span> UploadPro. All rights reserved.</p>
+            <p>
+                <a href="/privacy">Privacy Policy</a> | 
+                <a href="/terms">Terms of Service</a> | 
+                <a href="/cookies">Cookie Policy</a>
+            </p>
+        </div>
+    </footer>
+    <script src="{% static 'js/layout.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>
