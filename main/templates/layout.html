@@ -7,6 +7,7 @@
     <title>{% block title %}My Website{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'layout.css' %}">
+    <link rel="stylesheet" href="{% static 'responsive.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 
@@ -23,11 +24,6 @@
                 <li><a href="{% url 'about' %}">About Us</a></li>
                 <li><a href="{% url 'contact' %}">Contact Us</a></li>
             </ul>
-            <div id="theme-toggle-div">
-                <button id="theme-toggle" aria-label="Toggle theme" title="Toggle Theme">
-                    <i id="theme-icon" class="fas"></i>
-                </button>
-            </div>
         </div>
     </nav>
 
