@@ -1,34 +1,3 @@
-// Theme Switching Logic - Improved
-const themes = {
-    'theme-blue': 'fa-sun',
-    'theme-dark': 'fa-moon',
-    'theme-light': 'fa-lightbulb'
-};
-
-const themeOrder = ['theme-blue', 'theme-dark', 'theme-light'];
-let currentTheme = localStorage.getItem('theme') || 'theme-blue';
-const htmlEl = document.documentElement;
-const themeBtn = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-
-// Initialize theme
-function setTheme(theme) {
-    if (!themes[theme]) theme = 'theme-blue';
-    htmlEl.className = theme;
-    themeIcon.className = `fas ${themes[theme]}`;
-    localStorage.setItem('theme', theme);
-    currentTheme = theme;
-}
-
-setTheme(currentTheme);
-
-// Theme toggle handler
-themeBtn.addEventListener('click', () => {
-    const currentIndex = themeOrder.indexOf(currentTheme);
-    const nextIndex = (currentIndex + 1) % themeOrder.length;
-    setTheme(themeOrder[nextIndex]);
-});
-
 // File Upload Logic - Improved with better error handling
 const fileInput = document.getElementById('file-input');
 const fileName = document.getElementById('file-name');
@@ -168,6 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupDragAndDrop();
     setupUpload();
 });
+
 // footer
-// Add this to your layout.js
 document.getElementById('current-year').textContent = new Date().getFullYear();

@@ -61,7 +61,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
-    background-color: var(--bg-color);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -81,12 +80,12 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    /* background: #ffffff; */
 }
 
 /* Navigation */
 nav {
     /* background-color: var(--bg-color); */
-    background-color: #8ab4f8;
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
@@ -99,6 +98,7 @@ nav .container {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 20px;
+    background: #ffffff;
 }
 
 .nav-logo {
@@ -175,8 +175,7 @@ footer {
 /* Footer About Section */
 /* Footer Styles */
 footer {
-    /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
-    background: #7e64da;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--footer-text, white);
     padding: 4rem 0 0;
     position: relative;
@@ -473,7 +472,7 @@ footer {
 }
 
 .file-upload-card {
-    background: var(--bg-color);
+    background: white;
     border-radius: 12px;
     box-shadow: var(--shadow);
     padding: 2.5rem;
