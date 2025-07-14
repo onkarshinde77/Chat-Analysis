@@ -1,31 +1,49 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
 import numpy as np
+import pandas as pd
 from helper.preprocess import preprocess
-from helper.helper import fetch_stats , active_user , create_wordcloud,count_max_word , emoji_list,month_year
+from helper.helper import fetch_stats, active_user, create_wordcloud, count_max_word, emoji_list, month_year
 import matplotlib.pyplot as plt
 
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
+def upload_file(request):
+    data = None
+    file_content = None
+    users = []
+    selected_user = None
 
-@require_POST
-@csrf_exempt  # If you use CSRF token in JS, you can remove this decorator
-def upload_files(request):
-    uploaded_files = request.FILES.getlist('files')
-    saved_files = []
-    for file in uploaded_files:
-        # Save each file as needed
-        with open(f'/tmp/{file.name}', 'wb+') as destination:
-            for chunk in file.chunks():
-                destination.write(chunk)
-        saved_files.append(file.name)
-    return JsonResponse({'status': 'success', 'files': saved_files})
+    if request.method == 'POST':
+        # Check if file is uploaded
+        if request.FILES.get('uploaded_file'):
+            uploaded_file = request.FILES['uploaded_file']
+            file_content = uploaded_file.read().decode('utf-8')
+            data = preprocess(file_content)
+            request.session['file_content'] = file_content  # Save to session for later filtering
+        else:
+            # If no file uploaded, try to get file_content from session
+            file_content = request.session.get('file_content')
+            if file_content:
+                data = preprocess(file_content)
 
+        if data is not None and not data.empty:
+            users = data['sender'].unique()
+            # Check if user is selected
+            selected_user = request.POST.get('selected_user')
+            if selected_user:
+                # Filter data for selected user
+                data = data[data['sender'] == selected_user]
+            table = data.to_html(classes='table table-bordered', index=False)
+            return render(request, 'upload.html', {
+                'file_content': table,
+                'users': users,
+                'selected_user': selected_user,
+                'display' : None,
+            })
 
-def index(request):
-    return render(request,'layout.html')
+    return render(request, 'upload.html', {'file_content': file_content})
+
+# def index(request):
+#     return render(request,'layout.html')
     
 def about(request):
     return render(request,'about.html')

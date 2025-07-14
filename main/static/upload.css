@@ -77,7 +77,7 @@ a:hover {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 0 20px;
     /* background: #ffffff; */
@@ -159,6 +159,7 @@ footer {
     color: var(--footer-text, white);
     /* Fallback to white if variable not defined */
     transition: var(--transition);
+    margin-top: 3rem;
 }
 
 .footer-container {
@@ -462,73 +463,290 @@ footer {
     }
 }
 
-/* File Upload Section Styles */
-.file-upload-container {
+/* Main Container */
+.file-content-main-div {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 70vh;
-    padding: 2rem 0;
-}
-
-.file-upload-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.file-upload-card:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-}
-
-.upload-icon {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.file-upload-card h2 {
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-}
-
-/* Drop Area Styles */
-.drop-area {
-    border: 2px dashed var(--border-color);
-    border-radius: 8px;
+    flex-direction: row;
     padding: 2rem;
-    margin-bottom: 1.5rem;
+    margin: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    width: 90%;
+}
+
+/* Dropdown Container */
+.dropdown-div {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 0.5rem;
+}
+
+.dropdown {
+    margin-top: 1rem;
+    position: relative;
+    font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 220px;
+}
+
+.dropdown select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+}
+
+.dropdown select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.dropdown select:hover {
+    border-color: #a5b4fc;
+}
+
+.main-table-div {
+    margin-top: 1.5rem;
+}
+
+.table-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Responsive table container */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Style for the table inside .table-responsive */
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Optional: Style for table cells */
+.table-responsive td,
+.table-responsive th {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+}
+
+/* Optional: Style for table header */
+.table-responsive th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Optional: Zebra striping for table rows */
+.table-responsive tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.div-form {
+    max-width: 480px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.div-form:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading Style */
+.heading-form {
+    margin: 0 0 2rem;
+    color: #2c3e50;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.heading-form::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #4a6bff, #6a5acd);
+    border-radius: 2px;
+}
+
+/* File Upload Form */
+.upload-form {
+    text-align: center;
+}
+
+/* File Input Styling */
+.file-label {
+    display: block;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 2rem;
+    border: 2px dashed #e0e0e0;
+    border-radius: 12px;
+    background: #f9f9f9;
+    color: #666;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.drop-area:hover {
-    border-color: var(--primary-color);
-    background: rgba(66, 133, 244, 0.05);
+.file-label:hover {
+    border-color: #b3b3b3;
+    background: #f5f5f5;
 }
 
-.drop-area p {
-    margin: 0.5rem 0;
-    color: var(--text-light);
+.file-label:active {
+    border-color: #4a6bff;
+    background: rgba(74, 107, 255, 0.05);
 }
 
-.drop-area .browse-text {
-    color: var(--primary-color);
+.file-label i {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: #4a6bff;
+}
+
+/* Upload Button */
+.upload-form button[type="submit"] {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #4a6bff, #6a5acd);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(74, 107, 255, 0.3);
 }
 
-.drop-area.highlight {
-    border-color: var(--primary-color);
-    background: rgba(66, 133, 244, 0.1);
+.upload-form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #3a56d4, #5a4fbd);
+    /* transform: translateY(-3px); */
+    box-shadow: 0 8px 25px rgba(74, 107, 255, 0.4);
+}
+
+.upload-form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* upload.css */
+.table-heading {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    letter-spacing: -0.3px;
+    position: relative;
+    display: inline-block;
+    /* For underline effect */
+    padding-bottom: 0.5rem;
+}
+
+/* Gradient underline effect */
+.table-heading::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #4a6bff, #6a5acd);
+    border-radius: 3px;
+}
+
+.table-responsive {
+    margin-top: 2rem;
+    overflow-x: auto;
+    max-height: 25rem;
+}
+
+/* Make the table take full width of container */
+table.dataframe {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    font-size: 1rem;
+    width: 70%;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+}
+
+/* Sticky header */
+table.dataframe th {
+    position: sticky;
+    top: 0;
+    background: #1976d2;
+    color: #fff;
+    border-bottom: 2px solid #1565c0;
+    z-index: 2;
+}
+
+/* Table cell styles */
+table.dataframe th,
+table.dataframe td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* Limit the width of the messages column and wrap text */
+table.dataframe td:nth-child(2),
+table.dataframe th:nth-child(2) {
+    max-width: 17rem;
+    /* 200rem is too large, use 20rem or 300px */
+    min-width: 10rem;
+    /* 40rem is too large, use 8rem or 120px */
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Alternate row color */
+table.dataframe tbody tr:nth-child(even) {
+    background: #f5f7fa;
+}
+
+/* Hover effect */
+table.dataframe tbody tr:hover {
+    background: #e3f2fd;
 }
 
 /* File Input Styles */

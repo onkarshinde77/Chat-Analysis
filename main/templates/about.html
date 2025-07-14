@@ -1,42 +1,41 @@
-{% extends "layout.html" %}
+{% extends 'upload.html' %}
 
-{% block title %}About Us | My Website{% endblock %}
+{% block title %}
+  About Us | My Website
+{% endblock %}
 {% load static %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'about.css' %}">
+  <link rel="stylesheet" href="{% static 'about.css' %}" />
 {% endblock %}
 {% block content %}
-    <!-- Main Content -->
-    <section class="main-content">
-        <section class="about-section">
-            <div class="about-header">
-                <h1>About Our Company</h1>
-                <p>Learn more about who we are and what we do</p>
-            </div>
+  <!-- Main Content -->
+  <section class="main-content">
+    <section class="about-section">
+      <div class="about-header">
+        <h1>About Our Company</h1>
+        <p>Learn more about who we are and what we do</p>
+      </div>
 
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://nmspacemuseum.org/wp-content/uploads/2019/03/Elon_Musk.jpg" alt="Our Team">
-                </div>
-                <div class="about-text">
-                    <h2>Our Story</h2>
-                    <p>Founded in 2010, we started as a small team with a big vision. Over the years, we've grown into a
-                        leading company in our industry, serving clients worldwide with innovative solutions and
-                        exceptional service.</p>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://nmspacemuseum.org/wp-content/uploads/2019/03/Elon_Musk.jpg" alt="Our Team" />
+        </div>
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>Founded in 2010, we started as a small team with a big vision. Over the years, we've grown into a leading company in our industry, serving clients worldwide with innovative solutions and exceptional service.</p>
 
-                    <h2>Our Mission</h2>
-                    <p>We strive to deliver high-quality products and services that make a difference in people's lives.
-                        Our commitment to excellence and customer satisfaction drives everything we do.</p>
+          <h2>Our Mission</h2>
+          <p>We strive to deliver high-quality products and services that make a difference in people's lives. Our commitment to excellence and customer satisfaction drives everything we do.</p>
 
-                    <h2>Our Values</h2>
-                    <ul>
-                        <li>Integrity in all our dealings</li>
-                        <li>Innovation to drive progress</li>
-                        <li>Customer-centric approach</li>
-                        <li>Sustainability for future generations</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+          <h2>Our Values</h2>
+          <ul>
+            <li>Integrity in all our dealings</li>
+            <li>Innovation to drive progress</li>
+            <li>Customer-centric approach</li>
+            <li>Sustainability for future generations</li>
+          </ul>
+        </div>
+      </div>
     </section>
+  </section>
 {% endblock %}
