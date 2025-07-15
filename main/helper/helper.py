@@ -24,7 +24,7 @@ def fetch_stats(selected_user,data):
 def active_user(data):
     active_users = data['sender'].value_counts()
     per = round((data['sender'].value_counts()/data.shape[0])*100,2).reset_index()
-    per = per.rename(columns={'index':"name",'sender':'percentage'})
+    per = per.rename(columns={'sender':"name",'count':'percentage'})
     per['percentage'] = per['percentage'].astype(str) + '%'
     return active_users,per
 
@@ -113,6 +113,7 @@ def emoji_list(selected_user,data):
     emojis = Counter(emojis)
     emojis = [list(item) for item in emojis.items()]
     emoji_ = pd.DataFrame(sort_(emojis))
+    emoji_ = emoji_.rename(columns={0:'emoji',1:'count'})
     # emoji_['nor_num'] = 1/(1+ np.exp(-emoji_[1]))
     # bins = [0,10, 20, 30, 40, np.inf]
     # labels = ['10 <', '20 <', '30 <', '40 <', '40+']

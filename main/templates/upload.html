@@ -104,12 +104,21 @@
                 </tbody>
               </table>
             </div>
-            {% comment %} graph of 
-            active user {% endcomment %}
+            {% comment %} graph of active user {% endcomment %}
             <div class="active_user_chart_div">
               <h3 class="table-heading">Most Active User:</h3>
               <img src="data:image/png;base64,{{ chart }}">
+              <div class="table-responsive">{{ max_user_table |safe }}</div>
             </div>
+            <div class="max_word_div">
+              <h3 class="table-heading">Most Used Words:</h3>
+              <div class="table-responsive">{{ most_used_words |safe }}</div>
+            </div>
+            <div class="max_emoji_div">
+              <h3 class="table-heading">Most Used Emojis:</h3>
+              <div class="table-responsive">{{ emoji | safe }}</div>
+            </div>
+            
           </div>
         {% endif %}
       {% endblock %}
