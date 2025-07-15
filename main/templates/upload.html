@@ -11,6 +11,7 @@
     </title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'upload.css' %}" />
+    <link rel="stylesheet" href="{% static 'functions.css' %}" />
     <link rel="stylesheet" href="{% static 'responsive.css' %}" />
     {% block extra_css %}
 
@@ -66,10 +67,10 @@
                 <!-- Add a hidden input to preserve the uploaded file if needed -->
                 <div class="dropdown">
                   <select name="selected_user" onchange="this.form.submit()">
-                    <option value="">Select User</option>
-                      {% for option in users %}
-                        <option value="{{ option }}" {% if selected_user == option %}selected{% endif %}>{{ option }}</option>
-                      {% endfor %}
+                    <option value="All Users">All Users</option>
+                    {% for option in users %}
+                      <option value="{{ option }}" {% if selected_user == option %}selected {% endif %}>{{ option }}</option>
+                    {% endfor %}
                   </select>
                 </div>
                 <!-- Optionally, keep the file input here if you want to allow re-upload -->
@@ -78,6 +79,36 @@
             <div class="main-table-div">
               <h3 class="table-heading">File Content:</h3>
               <div class="table-responsive">{{ file_content|safe }}</div>
+            </div>
+          </div>
+          <div class="all_stat_main_div">
+            {% comment %} stats {% endcomment %}
+            <div class="stats-table-container">
+              <h3 class="table-heading">Stats:</h3>
+              <table class="stats-table">
+                <thead>
+                  <tr>
+                    <th>Total Messages</th>
+                    <th>Total Words</th>
+                    <th>Total Media</th>
+                    <th>Total Links</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Total Messages">{{mess_num}}</td>
+                    <td data-label="Total Words">{{words}}</td>
+                    <td data-label="Total Media">{{media}}</td>
+                    <td data-label="Total Links">{{link_count}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            {% comment %} graph of 
+            active user {% endcomment %}
+            <div class="active_user_chart_div">
+              <h3 class="table-heading">Most Active User:</h3>
+              <img src="data:image/png;base64,{{ chart }}">
             </div>
           </div>
         {% endif %}

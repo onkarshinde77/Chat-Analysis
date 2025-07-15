@@ -9,15 +9,16 @@ def fetch_stats(selected_user,data):
     if selected_user != 'All Users':
         new_df = data[data['sender'] == selected_user ]
     words=[]
-    num = new_df.shape[0]
+    mess_num = new_df.shape[0]
     for mess in new_df['messages']:
         words.extend(mess.split())
+    words = len(words)
     # count media
     media = new_df[new_df['messages']=='<Media omitted>'].shape[0]
     # count links
     link_count = new_df[new_df['messages'].str.startswith("https://") | new_df['messages'].str.startswith("www.")].shape[0]
 
-    return num,words,media, link_count
+    return mess_num,words,media, link_count
 
 
 def active_user(data):

@@ -6,6 +6,9 @@ from helper.preprocess import preprocess
 from helper.helper import fetch_stats, active_user, create_wordcloud, count_max_word, emoji_list, month_year
 import matplotlib.pyplot as plt
 
+from helper.charts import make_chart_to_img
+
+
 def upload_file(request):
     data = None
     file_content = None
@@ -20,7 +23,6 @@ def upload_file(request):
             data = preprocess(file_content)
             request.session['file_content'] = file_content  # Save to session for later filtering
         else:
-            # If no file uploaded, try to get file_content from session
             file_content = request.session.get('file_content')
             if file_content:
                 data = preprocess(file_content)
@@ -30,14 +32,27 @@ def upload_file(request):
             # Check if user is selected
             selected_user = request.POST.get('selected_user')
             if selected_user:
+                if selected_user !='All Users':
                 # Filter data for selected user
-                data = data[data['sender'] == selected_user]
+                    data = data[data['sender'] == selected_user]
             table = data.to_html(classes='table table-bordered', index=False)
+            
+            # stat of selected user
+            mess_num,words,media, link_count = fetch_stats(selected_user,data)
+            # active user
+            active_users , per = active_user(data)
+            active_users = active_users.head(7)
+            chart = make_chart_to_img(selected_user,active_users)
             return render(request, 'upload.html', {
                 'file_content': table,
                 'users': users,
                 'selected_user': selected_user,
                 'display' : None,
+                'mess_num' : mess_num,
+                'words' : words,
+                'media': media,
+                'link_count':link_count,
+                'chart': chart,
             })
 
     return render(request, 'upload.html', {'file_content': file_content})

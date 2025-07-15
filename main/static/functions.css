@@ -1,0 +1,138 @@
+.stats-table-container {
+    margin: auto;
+    overflow-x: auto;
+    border-radius: 12px;
+    max-width: 70%;
+    min-width: 40%;
+}
+
+.stats-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Segoe UI', 'Inter', -apple-system, system-ui, sans-serif;
+    /* background: white; */
+    border-radius: 12px;
+    /* overflow: hidden; */
+    width: 100%;
+}
+
+/* Header styling with gradient */
+.stats-table th {
+    background: linear-gradient(135deg, #6b46e5 0%, #4f46e5 100%);
+    color: white;
+    font-weight: 600;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+/* Column separators */
+.stats-table th:not(:last-child),
+.stats-table td:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stats-table td:not(:last-child) {
+    border-right: 1px solid #f0f0f0;
+}
+
+/* Cell styling */
+.stats-table td {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    font-weight: 500;
+    color: #374151;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+/* Row separators */
+.stats-table tbody tr {
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    /* background-color: #f8f5ff; */
+}
+
+.stats-table tbody tr:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2%;
+    width: 96%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #e0e0e0 20%, #e0e0e0 80%, transparent 100%);
+}
+
+/* Hover effect */
+.stats-table tr:hover td {
+    background-color: #f8f5ff;
+}
+
+/* First and last child rounding */
+.stats-table th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.stats-table th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.stats-table tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.stats-table tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .stats-table th {
+        display: none;
+    }
+
+    .stats-table td {
+        display: block;
+        text-align: right;
+        padding: 1rem;
+        border-right: none !important;
+    }
+
+    .stats-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        color: #6b7280;
+    }
+
+    .stats-table tbody tr::after {
+        display: none;
+    }
+
+    .stats-table td:not(:last-child) {
+        border-bottom: 1px solid #f0f0f0;
+    }
+}
+
+.all_stat_main_div {
+    width: 100%;
+    /* background-color: #6b7280; */
+}
+
+.active_user_chart_div {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    /* gap: 0.5rem; */
+}
+
+.active_user_chart_div h3 {
+    max-width: 12rem;
+}
+
+.active_user_chart_div img {
+    max-width: 30rem;
+}
