@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -8,11 +10,26 @@ def active_user_to_img(selected_user,X):
         fig, ax = plt.subplots()
         ax.bar(X.index, X.values, color='red')
         plt.xticks(rotation='vertical')
-        # plt.xticks(rotation=35)
+        plt.tight_layout()
         
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
         buf.seek(0)
         img_base64 = base64.b64encode(buf.read()).decode('utf-8')
+        plt.close(fig)
         return img_base64
     else: return None
+    
+def timeline_chart(timeline):
+    fig ,ax = plt.subplots()
+    ax.plot(timeline['month_year'],timeline['messages'], color='red')
+    plt.xticks(rotation="vertical")
+    plt.tight_layout()
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    buf.seek(0)
+    img_base64 = base64.b64encode(buf.read()).decode('utf-8')
+    plt.close(fig)
+    return img_base64
+    
+    

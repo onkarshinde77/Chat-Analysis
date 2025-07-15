@@ -475,6 +475,17 @@ footer {
     width: 90%;
 }
 
+@media (max-width: 1000px) {
+    .file-content-main-div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dropdown-div {
+        align-self: flex-start;
+    }
+}
+
 /* Dropdown Container */
 .dropdown-div {
     display: flex;
@@ -524,44 +535,23 @@ footer {
     margin-top: 1.5rem;
 }
 
-.table-heading {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-/* Responsive table container */
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Optional: Style for the table inside .table-responsive */
 .table-responsive table {
     width: 100%;
     border-collapse: collapse;
 }
 
-/* Optional: Style for table cells */
 .table-responsive td,
 .table-responsive th {
     padding: 0.75rem 1rem;
     border: 1px solid #e5e7eb;
 }
 
-/* Optional: Style for table header */
 .table-responsive th {
     background-color: #f9fafb;
     font-weight: 600;
     text-align: left;
 }
 
-/* Optional: Zebra striping for table rows */
 .table-responsive tr:nth-child(even) {
     background-color: #f9fafb;
 }
@@ -643,8 +633,8 @@ footer {
 
 /* Upload Button */
 .upload-form button[type="submit"] {
-    width: 100%;
-    padding: 1.2rem;
+    width: 80%;
+    padding: 1rem;
     background: linear-gradient(135deg, #4a6bff, #6a5acd);
     color: white;
     border: none;
@@ -654,6 +644,7 @@ footer {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(74, 107, 255, 0.3);
+    margin-top: 1rem;
 }
 
 .upload-form button[type="submit"]:hover {
@@ -666,7 +657,6 @@ footer {
     transform: translateY(0);
 }
 
-/* upload.css */
 .table-heading {
     color: #2c3e50;
     font-size: 1.5rem;
@@ -675,11 +665,10 @@ footer {
     letter-spacing: -0.3px;
     position: relative;
     display: inline-block;
-    /* For underline effect */
     padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Gradient underline effect */
 .table-heading::after {
     content: "";
     position: absolute;
@@ -692,23 +681,25 @@ footer {
 }
 
 .table-responsive {
-    margin-top: 2rem;
+    max-width: 50rem;
     overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     max-height: 25rem;
 }
 
-/* Make the table take full width of container */
 table.dataframe {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     font-size: 1rem;
-    width: 70%;
+    width: 100%;
     margin-bottom: 1.5rem;
     border-collapse: collapse;
 }
 
-/* Sticky header */
 table.dataframe th {
     position: sticky;
     top: 0;
@@ -718,7 +709,6 @@ table.dataframe th {
     z-index: 2;
 }
 
-/* Table cell styles */
 table.dataframe th,
 table.dataframe td {
     padding: 0.75rem 1rem;
@@ -726,48 +716,21 @@ table.dataframe td {
     vertical-align: middle;
 }
 
-/* Limit the width of the messages column and wrap text */
 table.dataframe td:nth-child(2),
 table.dataframe th:nth-child(2) {
     max-width: 17rem;
-    /* 200rem is too large, use 20rem or 300px */
     min-width: 10rem;
-    /* 40rem is too large, use 8rem or 120px */
     white-space: normal;
     word-break: break-word;
     overflow-wrap: break-word;
 }
 
-/* Alternate row color */
 table.dataframe tbody tr:nth-child(even) {
     background: #f5f7fa;
 }
 
-/* Hover effect */
 table.dataframe tbody tr:hover {
     background: #e3f2fd;
-}
-
-/* File Input Styles */
-.custom-file-input {
-    display: none;
-}
-
-.custom-file-label {
-    display: inline-block;
-    background: var(--primary-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: var(--transition);
-    margin-top: 1rem;
-    font-weight: 500;
-}
-
-.custom-file-label:hover {
-    background: var(--accent-color);
-    transform: translateY(-2px);
 }
 
 .file-name {
@@ -775,72 +738,6 @@ table.dataframe tbody tr:hover {
     margin: 1rem 0;
     color: var(--text-light);
     font-size: 0.9rem;
-}
-
-/* Upload Progress Styles */
-.upload-progress {
-    width: 100%;
-    height: 8px;
-    background: var(--bg-secondary);
-    border-radius: 4px;
-    margin: 1.5rem 0;
-    overflow: hidden;
-    display: none;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 4px;
-    transition: width 0.3s ease;
-}
-
-/* Upload Button Styles */
-.upload-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.9rem 2rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.upload-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 168, 83, 0.3);
-}
-
-.upload-btn:disabled {
-    background: var(--bg-secondary);
-    color: var(--text-light);
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-/* Success Message Styles */
-.success-message {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(52, 168, 83, 0.1);
-    padding: 1rem;
-    border-radius: 6px;
-    margin-top: 1.5rem;
-    color: var(--secondary-color);
-    animation: fadeIn 0.5s ease;
-}
-
-.success-message i {
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
 }
 
 @keyframes fadeIn {
@@ -888,15 +785,5 @@ table.dataframe tbody tr:hover {
     .file-upload-card h2 {
         font-size: 1.3rem;
         margin-bottom: 1rem;
-    }
-
-    .custom-file-label {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
-    .upload-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
     }
 }

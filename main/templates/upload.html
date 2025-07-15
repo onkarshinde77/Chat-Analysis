@@ -108,7 +108,7 @@
             <div class="active_user_chart_div">
               <h3 class="table-heading">Most Active User:</h3>
               <img src="data:image/png;base64,{{ chart }}">
-              <div class="table-responsive">{{ max_user_table |safe }}</div>
+              <div class="table-max-user">{{ max_user_table |safe }}</div>
             </div>
             <div class="max_word_div">
               <h3 class="table-heading">Most Used Words:</h3>
@@ -117,6 +117,10 @@
             <div class="max_emoji_div">
               <h3 class="table-heading">Most Used Emojis:</h3>
               <div class="table-responsive">{{ emoji | safe }}</div>
+            </div>
+            <div class="max_emoji_div">
+              <h3 class="table-heading">Timeline:</h3>
+              <img src="data:image/png;base64,{{ timeline }}">
             </div>
             
           </div>
@@ -166,6 +170,7 @@
       </div>
     </footer>
     <script src="{% static 'js/layout.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
     {% block extra_js %}
 
     {% endblock %}

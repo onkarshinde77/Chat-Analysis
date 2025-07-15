@@ -6,7 +6,7 @@ from helper.preprocess import preprocess
 from helper.helper import fetch_stats, active_user, create_wordcloud, count_max_word, emoji_list, month_year
 import matplotlib.pyplot as plt
 
-from helper.charts import active_user_to_img
+from helper.charts import active_user_to_img , timeline_chart
 
 
 def upload_file(request):
@@ -50,6 +50,10 @@ def upload_file(request):
             # emoji list
             emoji = emoji_list(selected_user,data)
             emoji = emoji.to_html(classes='table table-bordered', index=False)
+            # timeline
+            timeline = month_year(selected_user,data)
+            timeline = timeline_chart(timeline)
+            
             return render(request, 'upload.html', {
                 'file_content': table,
                 'users': users,
@@ -62,7 +66,8 @@ def upload_file(request):
                 'chart': chart,
                 'max_user_table': max_user_table,
                 'most_used_words':most_used_words,
-                'emoji' : emoji
+                'emoji' : emoji,
+                'timeline' : timeline,
             })
 
     return render(request, 'upload.html', {'file_content': file_content})
