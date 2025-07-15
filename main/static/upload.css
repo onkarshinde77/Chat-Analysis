@@ -468,10 +468,8 @@ footer {
     display: flex;
     flex-direction: row;
     padding: 2rem;
-    margin: 1rem;
     justify-content: space-between;
-    align-items: center;
-    gap: 3rem;
+    /* align-items: center; */
     width: 90%;
 }
 
@@ -488,6 +486,7 @@ footer {
 
 /* Dropdown Container */
 .dropdown-div {
+    margin-top: 4.6rem;
     display: flex;
     justify-content: flex-start;
     padding: 0 0.5rem;
@@ -685,7 +684,7 @@ footer {
     overflow-x: auto;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     margin-bottom: 2rem;
     max-height: 25rem;
 }
@@ -696,7 +695,6 @@ table.dataframe {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     font-size: 1rem;
     width: 100%;
-    margin-bottom: 1.5rem;
     border-collapse: collapse;
 }
 
@@ -716,11 +714,18 @@ table.dataframe td {
     vertical-align: middle;
 }
 
+table.dataframe td:nth-child(1),
+table.dataframe th:nth-child(1) {
+    max-width: 10rem;
+    min-width: 9rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 table.dataframe td:nth-child(2),
 table.dataframe th:nth-child(2) {
-    max-width: 17rem;
-    min-width: 10rem;
-    white-space: normal;
+    max-width: 18rem;
+    min-width: 11rem;
     word-break: break-word;
     overflow-wrap: break-word;
 }

@@ -4,41 +4,29 @@
     border-radius: 12px;
     max-width: 70%;
     min-width: 40%;
+    margin-bottom: 2rem;
 }
 
 .stats-table {
-    border-collapse: separate;
+    /* border-collapse: separate; */
     border-spacing: 0;
     font-family: 'Segoe UI', 'Inter', -apple-system, system-ui, sans-serif;
-    /* background: white; */
-    border-radius: 12px;
-    /* overflow: hidden; */
+    border-radius: 8px;
     width: 100%;
 }
 
-/* Header styling with gradient */
 .stats-table th {
-    background: linear-gradient(135deg, #6b46e5 0%, #4f46e5 100%);
+    background: #1976d2;
     color: white;
     font-weight: 600;
-    padding: 1.25rem 1rem;
+    padding: 1rem;
     text-align: center;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
     position: relative;
+    border: 1px #6b7280 solid;
 }
 
-/* Column separators */
-.stats-table th:not(:last-child),
-.stats-table td:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.stats-table td:not(:last-child) {
-    border-right: 1px solid #f0f0f0;
-}
-
-/* Cell styling */
 .stats-table td {
     padding: 1.5rem 1rem;
     text-align: center;
@@ -46,13 +34,13 @@
     color: #374151;
     font-size: 1.1rem;
     position: relative;
+    border: 0.7px #6b7280 solid;
 }
 
 /* Row separators */
 .stats-table tbody tr {
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    /* background-color: #f8f5ff; */
 }
 
 .stats-table tbody tr:not(:last-child)::after {
@@ -124,9 +112,16 @@
 .active_user_chart_div {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 0 auto 2rem;
     width: 70%;
-    /* gap: 0.5rem; */
+}
+
+.table-max-user-div {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 0.5rem;
+    justify-content: space-between;
 }
 
 .active_user_chart_div h3 {
@@ -135,16 +130,46 @@
 
 .active_user_chart_div img {
     max-width: 27rem;
+    border: 0.5px solid #6b7280;
 }
 
+.max_word_div {
+    width: 70%;
+    margin: 0rem auto 2rem;
+}
+
+.specific-table table td:nth-child(1),
+.specific-table table th:nth-child(1) {
+    width: 5rem;
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.specific-table table td:nth-child(2),
+.specific-table table th:nth-child(2) {
+    width: 5rem;
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.max_emoji_div {
+    width: 70%;
+    margin: 0 auto 2rem;
+}
+
+
 .table-max-user {
-    max-width: 30rem;
     overflow-x: auto;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-    /* margin-bottom: 2rem; */
-    min-height: fit-content;
+    height: fit-content;
+    width: 48%;
+    min-width: 40%;
+    justify-self: flex-end;
 }
 
 .table-max-user th {
@@ -156,4 +181,4 @@
     z-index: 2;
 }
 
-.table-max-user dataframe table table-bordered {}
+/* .table-max-user.dataframe table table-bordered {} */

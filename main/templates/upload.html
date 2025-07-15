@@ -107,12 +107,14 @@
             {% comment %} graph of active user {% endcomment %}
             <div class="active_user_chart_div">
               <h3 class="table-heading">Most Active User:</h3>
-              <img src="data:image/png;base64,{{ chart }}">
-              <div class="table-max-user">{{ max_user_table |safe }}</div>
+              <div class="table-max-user-div">
+                <img src="data:image/png;base64,{{ chart }}">
+                <div class="table-max-user">{{ max_user_table |safe }}</div>
+              </div>
             </div>
             <div class="max_word_div">
               <h3 class="table-heading">Most Used Words:</h3>
-              <div class="table-responsive">{{ most_used_words |safe }}</div>
+              <div class="table-responsive specific-table">{{ most_used_words |safe }}</div>
             </div>
             <div class="max_emoji_div">
               <h3 class="table-heading">Most Used Emojis:</h3>
