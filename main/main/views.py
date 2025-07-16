@@ -31,10 +31,8 @@ def upload_file(request):
             users = data['sender'].unique()
             # Check if user is selected
             selected_user = request.POST.get('selected_user')
-            if selected_user:
-                if selected_user !='All Users':
-                # Filter data for selected user
-                    data = data[data['sender'] == selected_user]
+            if selected_user and selected_user !='All Users':
+                data = data[data['sender'] == selected_user]
             table = data.to_html(classes='table table-bordered', index=False)
             
             # stat of selected user
@@ -70,7 +68,7 @@ def upload_file(request):
                 'timeline' : timeline,
             })
 
-    return render(request, 'upload.html', {'file_content': file_content})
+    return render(request, 'upload.html', {'file_content': file_content,'display': 'block'})
 
 # def index(request):
 #     return render(request,'layout.html')

@@ -145,6 +145,50 @@ nav .container {
 .nav-links a:hover::after {
     width: 100%;
 }
+/* HAMBURGER STYLES — MOBILE ONLY */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger a {
+  width: 25px;
+  height: 3px;
+  background: var(--text-color);
+  border-radius: 2px;
+}
+
+/* RESPONSIVE MENU TOGGLE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #fff;
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    border-radius: 6px;
+    display: none;
+    z-index: 999;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
+
 
 /* Main Content */
 main {
@@ -153,16 +197,14 @@ main {
 }
 
 /* Footer Styles */
-
+/* 
 footer {
-    /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
     color: var(--footer-text, white);
-    /* Fallback to white if variable not defined */
     transition: var(--transition);
     margin-top: 3rem;
-}
+} */
 
-.footer-container {
+/* .footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
@@ -171,10 +213,8 @@ footer {
     gap: 3rem;
     position: relative;
     z-index: 2;
-}
+} */
 
-/* Footer About Section */
-/* Footer Styles */
 footer {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--footer-text, white);
@@ -196,7 +236,6 @@ footer {
     z-index: 2;
 }
 
-/* Footer About Section */
 .footer-about {
     padding-right: 2rem;
 }
@@ -229,7 +268,6 @@ footer {
     color: var(--footer-text, white);
 }
 
-/* Footer Social Icons */
 .footer-social {
     display: flex;
     gap: 1rem;
@@ -253,8 +291,6 @@ footer {
     color: var(--primary-color);
     transform: translateY(-3px);
 }
-
-/* Footer Links Sections */
 .footer-links h3.footer-heading {
     font-size: 1.4rem;
     margin-bottom: 1.8rem;
@@ -301,7 +337,6 @@ footer {
     color: var(--footer-icon, white);
 }
 
-/* Footer Contact Section */
 .footer-contact h3.footer-heading {
     font-size: 1.4rem;
     margin-bottom: 1.8rem;
@@ -337,7 +372,6 @@ footer {
     color: var(--footer-icon, white);
 }
 
-/* Footer Bottom Section */
 .footer-bottom {
     text-align: center;
     padding: 1rem 0;
@@ -364,7 +398,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Dynamic Year Update */
 #current-year {
     display: inline-block;
 }
@@ -468,9 +501,9 @@ footer {
     display: flex;
     flex-direction: row;
     padding: 2rem;
-    justify-content: space-between;
+    justify-content: space-around;
     /* align-items: center; */
-    width: 90%;
+    width: 100%;
 }
 
 @media (max-width: 1000px) {

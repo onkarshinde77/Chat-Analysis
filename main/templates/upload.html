@@ -27,16 +27,16 @@
           <i class="fas fa-cloud-upload-alt"></i>
           <span>UploadPro</span>
         </a>
+        <!-- HAMBURGER ICON -->
+        <div class="hamburger" id="hamburger">
+          <li><a href="/">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        </div>
         <ul class="nav-links">
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="{% url 'about' %}">About Us</a>
-          </li>
-          <li>
-            <a href="{% url 'contact' %}">Contact Us</a>
-          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'contact' %}">Contact Us</a></li>
         </ul>
       </div>
     </nav>
@@ -105,6 +105,7 @@
               </table>
             </div>
             {% comment %} graph of active user {% endcomment %}
+            {% if selected_user == "All Users" %}     
             <div class="active_user_chart_div">
               <h3 class="table-heading">Most Active User:</h3>
               <div class="table-max-user-div">
@@ -112,6 +113,8 @@
                 <div class="table-max-user">{{ max_user_table |safe }}</div>
               </div>
             </div>
+            {% endif%}
+
             <div class="max_word_div">
               <h3 class="table-heading">Most Used Words:</h3>
               <div class="table-responsive specific-table">{{ most_used_words |safe }}</div>
@@ -120,11 +123,10 @@
               <h3 class="table-heading">Most Used Emojis:</h3>
               <div class="table-responsive">{{ emoji | safe }}</div>
             </div>
-            <div class="max_emoji_div">
+            <div class="timeline_div">
               <h3 class="table-heading">Timeline:</h3>
               <img src="data:image/png;base64,{{ timeline }}">
             </div>
-            
           </div>
         {% endif %}
       {% endblock %}
@@ -171,10 +173,6 @@
         </p>
       </div>
     </footer>
-    <script src="{% static 'js/layout.js' %}"></script>
-    <script src="{% static 'js/home.js' %}"></script>
-    {% block extra_js %}
-
-    {% endblock %}
+    <script src="{% static 'js/upload.js' %}"></script>
   </body>
 </html>
