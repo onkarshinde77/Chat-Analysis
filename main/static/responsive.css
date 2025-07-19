@@ -1,12 +1,11 @@
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .nav-links {
         position: fixed;
         right: -100%;
         top: 70px;
         width: 50%;
         height: calc(100vh - 70px);
-        background-color: #2c3e50;
         flex-direction: column;
         align-items: center;
         padding: 2rem 0;

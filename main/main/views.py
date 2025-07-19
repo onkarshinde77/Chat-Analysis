@@ -10,12 +10,12 @@ from helper.forms import ContactForm
 
 from helper.charts import active_user_to_img , timeline_chart
 
-
 def upload_file(request):
     data = None
     file_content = None
     users = []
     selected_user = None
+    count=0
 
     if request.method == 'POST':
         # Check if file is uploaded
@@ -32,12 +32,13 @@ def upload_file(request):
         if data is not None and not data.empty:
             users = data['sender'].unique()
             # Check if user is selected
-            count=0
-            if count==0: selected_user = "All Users"
-            else : selected_user = request.POST.get('selected_user')
-            count+=1
+            # selected_user = "All Users"
+            selected_user = request.POST.get('selected_user')
+            # count+=1
+            print(selected_user,"-------------------------")
             if selected_user and selected_user !='All Users':
                 data = data[data['sender'] == selected_user]
+            else: selected_user = 'All Users'
             table = data.to_html(classes='table table-bordered', index=False)
             
             # stat of selected user

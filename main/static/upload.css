@@ -146,26 +146,10 @@ nav .container {
     width: 100%;
 }
 
-/* HAMBURGER STYLES — MOBILE ONLY */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
 
-.hamburger a {
-    width: 25px;
-    height: 3px;
-    background: var(--text-color);
-    border-radius: 2px;
-}
 
 /* RESPONSIVE MENU TOGGLE */
 @media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
 
     .nav-links {
         position: absolute;
