@@ -124,18 +124,6 @@
     justify-content: space-between;
 }
 
-@media (max-width: 1000px) {
-    .table-max-user-div {
-        flex-direction: column;
-
-    }
-
-    .table-max-user {
-        min-width: 100%;
-        width: 100%;
-    }
-}
-
 .active_user_chart_div h3 {
     max-width: 12rem;
 }
@@ -181,7 +169,7 @@
 }
 
 .timeline_div h3 {
-    max-width: 6rem;
+    max-width: 15.5rem;
 }
 
 .timeline_div img {
@@ -195,8 +183,7 @@
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     height: fit-content;
-    width: 48%;
-    min-width: 40%;
+    min-width: 48%;
     justify-self: flex-end;
 }
 
@@ -209,4 +196,13 @@
     z-index: 2;
 }
 
-/* .table-max-user.dataframe table table-bordered {} */
+@media (max-width: 1000px) {
+    .table-max-user-div {
+        flex-direction: column;
+
+    }
+
+    .table-max-user {
+        min-width: 100%;
+    }
+}

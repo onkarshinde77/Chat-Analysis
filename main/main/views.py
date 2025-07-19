@@ -1,10 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import numpy as np
 import pandas as pd
 from helper.preprocess import preprocess
-from helper.helper import fetch_stats, active_user, create_wordcloud, count_max_word, emoji_list, month_year
+from helper.helper import fetch_stats, active_user, count_max_word, emoji_list, month_year
 import matplotlib.pyplot as plt
+from django.core.mail import send_mail
+from helper.forms import ContactForm
 
 from helper.charts import active_user_to_img , timeline_chart
 
@@ -30,7 +32,10 @@ def upload_file(request):
         if data is not None and not data.empty:
             users = data['sender'].unique()
             # Check if user is selected
-            selected_user = request.POST.get('selected_user')
+            count=0
+            if count==0: selected_user = "All Users"
+            else : selected_user = request.POST.get('selected_user')
+            count+=1
             if selected_user and selected_user !='All Users':
                 data = data[data['sender'] == selected_user]
             table = data.to_html(classes='table table-bordered', index=False)
@@ -78,3 +83,29 @@ def about(request):
 
 def contact(request):    
     return render(request,'contact.html')
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            subject = f"New Contact Us message from {name}"
+            full_message = f"From: {name} <{email}>\n\nMessage:\n{message}"
+
+            send_mail(
+                subject,
+                full_message,
+                email,                # From Email (user's)
+                ['shindeonkar704@gmail.com'],  # To Email (your address)
+                fail_silently=False,
+            )
+            return redirect('thank_you')  # Define a success URL in your urls.py
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+def thank_you(request):
+    return render(request, 'thank_you.html')

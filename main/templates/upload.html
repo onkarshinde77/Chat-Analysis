@@ -66,6 +66,7 @@
                 {% csrf_token %}
                 <!-- Add a hidden input to preserve the uploaded file if needed -->
                 <div class="dropdown">
+                  <lable id="selected_user-lable" for="selected_user"> Select User :</lable>
                   <select name="selected_user" onchange="this.form.submit()">
                     <option value="All Users">All Users</option>
                     {% for option in users %}
@@ -124,7 +125,7 @@
               <div class="table-responsive">{{ emoji | safe }}</div>
             </div>
             <div class="timeline_div">
-              <h3 class="table-heading">Timeline:</h3>
+              <h3 class="table-heading">Active Month Timeline:</h3>
               <img src="data:image/png;base64,{{ timeline }}">
             </div>
           </div>
@@ -166,11 +167,11 @@
         <p>
           &copy; <span id="current-year">2023</span> UploadPro. All rights reserved.
         </p>
-        <p>
+        {% comment %} <p>
           <a href="/privacy">Privacy Policy</a> |
           <a href="/terms">Terms of Service</a> |
           <a href="/cookies">Cookie Policy</a>
-        </p>
+        </p> {% endcomment %}
       </div>
     </footer>
     <script src="{% static 'js/upload.js' %}"></script>
