@@ -127,7 +127,12 @@
 @media (max-width: 1000px) {
     .table-max-user-div {
         flex-direction: column;
-        
+
+    }
+
+    .table-max-user {
+        min-width: 100%;
+        width: 100%;
     }
 }
 

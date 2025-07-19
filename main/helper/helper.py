@@ -26,6 +26,8 @@ def active_user(data):
     per = round((data['sender'].value_counts()/data.shape[0])*100,2).reset_index()
     per = per.rename(columns={'sender':"name",'count':'percentage'})
     per['percentage'] = per['percentage'].astype(str) + '%'
+    if per.shape[0]>10 :
+        return active_users,per.head(10)
     return active_users,per
 
 def create_wordcloud(selected_user,data):
