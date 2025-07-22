@@ -22,7 +22,13 @@ def active_user_to_img(selected_user,X):
     
 def timeline_chart(timeline):
     fig ,ax = plt.subplots()
-    ax.plot(timeline['month_year'],timeline['messages'], color='red')
+    if timeline.shape[0] > 1:
+        ax.plot(timeline['month_year'], timeline['messages'], color='red')
+    elif timeline.shape[0] == 1:
+        ax.scatter(timeline['month_year'], timeline['messages'], color='red')
+    else:
+        plt.close(fig)
+        raise ValueError("DataFrame is empty. Nothing to plot.")
     plt.xticks(rotation="vertical")
     plt.tight_layout()
     buf = io.BytesIO()

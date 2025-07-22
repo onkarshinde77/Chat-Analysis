@@ -1,4 +1,3 @@
-from wordcloud import WordCloud
 import pandas as pd
 from collections import Counter
 import emoji
@@ -29,14 +28,6 @@ def active_user(data):
     if per.shape[0]>10 :
         return active_users,per.head(10)
     return active_users,per
-
-def create_wordcloud(selected_user,data):
-    df = data[data['messages'] != '<Media omitted>' ]
-    if selected_user != 'All Users':
-        df = df[df['sender'] == selected_user]
-    wc = WordCloud(width=300,height=300,min_font_size=10,background_color='white')
-    df_wc = wc.generate(df['messages'].str.cat(sep=" ")) 
-    return df_wc
 
 # ------------------------------------- Fuctions ------------------------------------------------------------
 

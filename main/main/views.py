@@ -31,16 +31,11 @@ def upload_file(request):
 
         if data is not None and not data.empty:
             users = data['sender'].unique()
-            # Check if user is selected
-            # selected_user = "All Users"
             selected_user = request.POST.get('selected_user')
-            # count+=1
-            print(selected_user,"-------------------------")
             if selected_user and selected_user !='All Users':
                 data = data[data['sender'] == selected_user]
             else: selected_user = 'All Users'
             table = data.to_html(classes='table table-bordered', index=False)
-            
             # stat of selected user
             mess_num,words,media, link_count = fetch_stats(selected_user,data)
             # active user
