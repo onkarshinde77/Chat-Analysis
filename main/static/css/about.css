@@ -66,3 +66,32 @@
 .about-text ul li {
     margin-bottom: 0.5rem;
 }
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--footer-social-bg, rgba(255, 255, 255, 0.1));
+    color: var(--footer-icon, white);
+    transition: var(--transition);
+    font-size: 1.1rem;
+    background-color: rgb(130, 185, 236);
+}
+
+.footer-social a:hover {
+    background: var(--footer-social-hover-bg, rgb(68, 150, 226));
+    color: var(--footer-icon, white);
+    transform: translateY(-3px);
+}
+
+.project-links li a {
+    color: #2c3e50;
+}
