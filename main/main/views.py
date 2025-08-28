@@ -1,10 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render,redirect
-import numpy as np
-import pandas as pd
 from helper.preprocess import preprocess
 from helper.helper import fetch_stats, active_user, count_max_word, emoji_list, month_year
-import matplotlib.pyplot as plt
 from django.core.mail import send_mail
 from helper.forms import ContactForm
 
