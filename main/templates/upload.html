@@ -38,8 +38,12 @@
     <!-- main -->
     <main class="container">
       {% block content %}
-        <div class="main-container-content">
-          <div class="div-form" style="display:{{ display }};">
+      <div class="main-container-content">
+        <div class="upload-heading-div">
+          <h2 >📂 Upload Your WhatsApp Chat</h2>
+          <h4>Easily analyze your WhatsApp conversations! Export your chat from WhatsApp, upload the .txt file here, and get detailed insights into your chat patterns, activity, and more.</h4>
+        </div>
+        <div class="div-form" style="display:{{ display }};">
             <h2 class="heading-form">Upload a file</h2>
             <form class="upload-form" method="POST" enctype="multipart/form-data">
               {% csrf_token %}
