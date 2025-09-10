@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import re
+from entity.config_entity import ChatData
+
 
 def preprocess(data):
     pattern = r"\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s*[ap]m\s*-\s"
@@ -11,6 +13,12 @@ def preprocess(data):
     data[['sender', 'messages']] = data['messages'].str.split(":", n=1, expand=True)
     data['sender'] = data['sender'].str.strip()
     data['messages'] = data['messages'].str.strip()
+    
+    # save chat only for sentimate analysis
+    chat = data['messages'][data['messages'] != '<Media omitted>' ]
+    obj = ChatData()
+    obj.make_file(data=chat)
+    
     # reorder the columns
     data = data[['sender', 'messages', 'dates']]
     data.dropna(inplace=True)
