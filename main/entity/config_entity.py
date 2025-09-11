@@ -1,7 +1,7 @@
 from .artifacts_entity import DataPath
 import os
 import pandas as pd
-from contant import CHAT_PATH_DIR_NAME ,CHAT_FILE_NAME
+from constant import CHAT_PATH_DIR_NAME ,CHAT_FILE_NAME
 
 class ChatData:
     def __init__(self):
@@ -12,10 +12,10 @@ class ChatData:
         file_path = os.path.join(self.path,CHAT_FILE_NAME)
         try:
             data.to_csv(file_path, index=False,header=True)
+            DataPath.chat_data_path = file_path
         except Exception as e:
             print(e)
             raise e
-        DataPath.chat_data = file_path
-
-
-        
+    def get_path(file_name : str)->str:
+        dir = os.getcwd()
+        return dir

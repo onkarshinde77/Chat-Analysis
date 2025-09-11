@@ -11,7 +11,6 @@ def upload_file(request):
     file_content = None
     users = []
     selected_user = None
-    count=0
 
     if request.method == 'POST':
         # Check if file is uploaded
