@@ -45,3 +45,12 @@ def preprocess(data):
     data = data.drop('time',axis=1)
     
     return data
+
+import stanza
+stanza.download('en')
+nlp = stanza.Pipeline('en')
+doc = nlp("The cat is sleeping")
+for sentence in doc.sentences:
+    for word in sentence.words:
+        print(word.text, word.upos)
+
