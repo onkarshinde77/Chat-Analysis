@@ -3,3 +3,4 @@ __pycache__/
 theme/
 node_modules/
 venv/
+venv2/
