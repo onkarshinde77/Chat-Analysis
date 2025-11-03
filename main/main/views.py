@@ -30,7 +30,8 @@ def upload_file(request):
             if selected_user and selected_user !='All Users':
                 data = data[data['sender'] == selected_user]
             else: selected_user = 'All Users'
-            table = data.to_html(classes='table table-bordered', index=False)
+            table = data[data['messages'] != '<Media omitted>' ]
+            table = table.to_html(classes='table table-bordered', index=False)
             # stat of selected user
             mess_num,words,media, link_count = fetch_stats(selected_user,data)
             # active user

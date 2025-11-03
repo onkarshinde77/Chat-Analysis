@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import re
-from entity.config_entity import ChatData
 
 
 def preprocess(data):
@@ -13,12 +12,7 @@ def preprocess(data):
     data[['sender', 'messages']] = data['messages'].str.split(":", n=1, expand=True)
     data['sender'] = data['sender'].str.strip()
     data['messages'] = data['messages'].str.strip()
-    
-    # save chat only for sentimate analysis
-    chat = data['messages'][data['messages'] != '<Media omitted>' ]
-    obj = ChatData()
-    obj.make_file(data=chat)
-    
+     
     # reorder the columns
     data = data[['sender', 'messages', 'dates']]
     data.dropna(inplace=True)
@@ -45,12 +39,3 @@ def preprocess(data):
     data = data.drop('time',axis=1)
     
     return data
-
-import stanza
-stanza.download('en')
-nlp = stanza.Pipeline('en')
-doc = nlp("The cat is sleeping")
-for sentence in doc.sentences:
-    for word in sentence.words:
-        print(word.text, word.upos)
-

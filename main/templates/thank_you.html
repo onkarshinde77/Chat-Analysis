@@ -1,19 +1,20 @@
-{% extends 'upload.html' %}
-
-{% block title %}
-  Thank You | My Website
-{% endblock %}
 {% load static %}
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/thank_you.css' %}" />
-{% endblock %}
-
-{% block content %}
-  <section class="main-content">
-    <section class="thank-you-section">
-      <h1>Thank You!</h1>
-      <p>Your message has been sent successfully. We will get back to you soon.</p>
-      <a href="{% url 'contact' %}">Send another message</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Thank You | My Website</title>
+    <link rel="stylesheet" href="{% static 'css/thank_you.css' %}" />
+  </head>
+  <body>
+    <section class="main-content">
+      <section class="thank-you-section">
+        <h1>Thank You!</h1>
+        <p>Your message has been sent successfully. We will get back to you soon.</p>
+        <!-- Change this href to your contact page filename -->
+        <a href="/contact">Send another message</a>
+      </section>
     </section>
-  </section>
-{% endblock %}
+  </body>
+</html>
